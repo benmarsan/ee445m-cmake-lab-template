@@ -1,14 +1,14 @@
-/*****************************************************************************/
-/* OSasm.s: low-level OS commands, written in assembly                       */
-/*****************************************************************************/
-// Jonathan Valvano/Andreas Gerstlauer, OS Lab 5 solution, 2/28/16
+@/*****************************************************************************/
+@/* OSasm.s: low-level OS commands, written in assembly                       */
+@/*****************************************************************************/
+@Jonathan Valvano/Andreas Gerstlauer, OS Lab 5 solution, 2/28/16
 
 
 .thumb
 .section .text
 .align 2
-// REQUIRE8
-// PRESERVE8
+@REQUIRE8
+@PRESERVE8
 
 .global	OS_Id
 .global OS_Sleep

@@ -24,10 +24,25 @@ target_include_directories(${EXECUTABLE} PRIVATE
     inc/RTOS_Lab5_User
 )
 
+# Compiler options
+add_compile_options(
+    # Compile options for position-independent code
+    -mword-relocations
+    -mlong-calls
+    -fno-common
+)
+
 # Linker options
 target_link_options(${EXECUTABLE} PRIVATE
-    -T${LINKER_FILE}
+    -mword-relocations
+    -mlong-calls
+    -fno-common
+    -nostartfiles
+    -T ${CMAKE_CURRENT_SOURCE_DIR}/app.ld
+    -Wl,--entry=main
     -Wl,-Map=${PROJECT_NAME}.map,--cref
+    -Wl,-r
+    -Wl,-Bsymbolic
 )
 
 target_link_libraries(${EXECUTABLE} PUBLIC
@@ -50,12 +65,4 @@ add_custom_command(TARGET ${EXECUTABLE} POST_BUILD
     # COMMAND ${CMAKE_OBJCOPY} -O srec --srec-len=64 $<TARGET_FILE:${EXECUTABLE}> ${S19_FILE}
     # COMMAND ${CMAKE_OBJCOPY} -O ihex $<TARGET_FILE:${EXECUTABLE}> ${HEX_FILE}
     COMMENT "Building ${BIN_FILE}"
-)
-
-flash_target(${BIN_FILE} flash-${PROJECT_NAME})
-
-add_custom_command(
-    TARGET ${EXECUTABLE}
-    POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -DPROJ_ROOT_DIR="${CMAKE_SOURCE_DIR}" -DVSCODE_DIR="${VSCODE_DIR}" -DPROJ_NAME="${PROJECT_NAME}" -DPROJ_ELF_PATH="${PROJECT_BINARY_DIR}/${EXECUTABLE}" -DOPENOCD_CFG="${OPENOCD_CFG}" -P "${CMAKE_SOURCE_DIR}/cmake/vscode-debug-run.cmake"
 )
