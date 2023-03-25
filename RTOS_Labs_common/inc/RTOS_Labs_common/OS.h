@@ -24,7 +24,7 @@
 #define TIME_1MS    80000          
 #define TIME_2MS    (2*TIME_1MS)  
 #define TIME_500US  (TIME_1MS/2)  
-#define TIME_250US  (TIME_1MS/5)  
+#define TIME_250US  (TIME_1MS/4)  
 
 /**
  * \brief Semaphore structure. Feel free to change the type of semaphore, there are lots of good solutions

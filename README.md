@@ -1,7 +1,8 @@
 # ECE 380L.12/445M Labs
 
 This project contains the lab starter code for ECE 380L.12/ECE 445M at the University of Texas at
-Austin taught by Andreas Gerstlauer and Jonathon Valvano.
+Austin taught by Andreas Gerstlauer and Jonathon Valvano. The original starter code is available
+on [Dr. Valvano's website](http://users.ece.utexas.edu/~valvano/arm/).
 
 ## Getting Started
 ### Linux Dependencies:
