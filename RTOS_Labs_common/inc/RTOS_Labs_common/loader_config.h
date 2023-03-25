@@ -43,14 +43,15 @@
 
 #include <stdint.h>
 #include "ff.h"
-#include "RTOS_Labs_common/heap.h"
-#include "RTOS_Labs_common/UART0int.h"
-#include "RTOS_Labs_common/OS.h"
+#include "heap.h"
+#include "UART0int.h"
+#include "OS.h"
 
 // Declare extern OS_AddProcess function (implemented in OS.c)
 int OS_AddProcess(void(*entry)(void), void *text, void *data, 
   unsigned long stackSize, unsigned long priority);
 
+// off_t already defined in GCC
 // typedef unsigned long int off_t;
 typedef void(entry_t)(void);
 

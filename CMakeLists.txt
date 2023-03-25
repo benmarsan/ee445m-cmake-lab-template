@@ -10,6 +10,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 set(VSCODE_DIR "${CMAKE_SOURCE_DIR}/.vscode")
 include(${CMAKE_SOURCE_DIR}/cmake/vscode-debug.cmake)
 
+# Script to generate flash-* targets
+include(${CMAKE_SOURCE_DIR}/cmake/flash-target.cmake)
+
 project(RTOS_Labs)
 
 enable_language(C ASM)
@@ -29,6 +32,8 @@ add_compile_options(
     -mthumb
     -mfpu=fpv4-sp-d16
     -mfloat-abi=hard
+    # -msoft-float
+    # -mgeneral-regs-only
     # Optimizations
     -ffunction-sections
     -fdata-sections
@@ -47,6 +52,8 @@ add_link_options(
     -mthumb
     -mfpu=fpv4-sp-d16
     -mfloat-abi=hard
+    # -msoft-float
+    # -mgeneral-regs-only
     -Wl,--gc-sections
     -Wl,-print-memory-usage
 )

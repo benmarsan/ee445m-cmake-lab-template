@@ -519,26 +519,13 @@ int Testmain2(void){   // Testmain2
 // Test supervisor calls (SVC exceptions)
 // Using inline assembly, syntax is dependent on the compiler
 // The following code compiles in Keil 5.x (even though the UI complains)
-__asm uint32_t SVC_OS_Id(void){
-    SVC #0
-    BX  LR
-  }
-__asm void SVC_OS_Kill(void){
-    SVC #1
-    BX  LR
-  }
-__asm void SVC_OS_Sleep(uint32_t t){
-    SVC #2
-    BX  LR
-  }
-__asm uint32_t SVC_OS_Time(void){
-    SVC #3
-    BX  LR
-  }
-__asm int SVC_OS_AddThread(void(*t)(void), uint32_t s, uint32_t p){
-    SVC #4
-    BX  LR
-  }
+// SVC calls implemented in svc_os.s
+uint32_t SVC_OS_Id(void);
+void SVC_OS_Kill(void);
+void SVC_OS_Sleep(uint32_t t);
+uint32_t SVC_OS_Time(void);
+int SVC_OS_AddThread(void(*t)(void), uint32_t s, uint32_t p);
+
 uint32_t line = 0;
 void TestSVCThread(void){ uint32_t id;	
   id = SVC_OS_Id();

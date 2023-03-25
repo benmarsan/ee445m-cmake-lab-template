@@ -13,9 +13,6 @@ set(CMAKE_C_EXTENSIONS OFF)
 set(APP_SRC
     src/startup.c
     src/Lab6.c
-    src/loader.c
-    src/ff.c
-    src/eFile.c
 )
 
 add_executable(${EXECUTABLE} ${APP_SRC})

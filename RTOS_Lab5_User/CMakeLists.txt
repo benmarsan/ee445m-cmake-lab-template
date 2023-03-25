@@ -11,7 +11,6 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
 set(APP_SRC
-    src/startup.c
     src/User.c
     src/osasm.s
     src/display.s

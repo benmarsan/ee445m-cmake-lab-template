@@ -57,8 +57,6 @@ add_custom_command(TARGET ${EXECUTABLE} POST_BUILD
     COMMENT "Building ${BIN_FILE}"
 )
 
-set(OPENOCD_CFG ${CMAKE_SOURCE_DIR}/openocd.cfg)
-include(${CMAKE_SOURCE_DIR}/cmake/flash-target.cmake)
 flash_target(${BIN_FILE} flash-${PROJECT_NAME})
 
 add_custom_command(
